@@ -1,26 +1,26 @@
 import React from 'react'
-import {View, Text, StyleSheet, Button, Alert} from 'react-native'
+import {View, Text, StyleSheet, Button, Alert, TouchableOpacity} from 'react-native'
 
 import Card from './Card'
+import Colors from '../defaultConstants/colors'
 
 const GameOver = props => {
 	return (
 		<Card style = {styles.summaryContainer}>
 			<View style = {styles.gameoverContainer}>
-				<Text>
+				<Text style = {styles.gameoverText}>
 					Game Over!
 				</Text>
 
-				<Text>
+				<Text style = {styles.numberOfRounds}>
 					Number of Rounds : {props.guessRounds}
 				</Text>
 
-				<Text>
+				<Text style = {styles.numberWas}>
 					Number was : {props.choice}
 				</Text>
-
+				<View style = {styles.button}><Button sytle = {{borderRadius:30}} color = {Colors.primary} title = "Start Game Again!" onPress = {props.restartGameHandler}/></View>
 			</View>
-			<Button title = "Start Game Again!" onPress = {props.restartGameHandler}/>
 		</Card>
 	)
 }
@@ -38,7 +38,24 @@ const styles = StyleSheet.create({
   		alignItems: 'center',
   		justifyContent: 'center',
   		margin: 60,
-  		height: "20%"
+  		height: "30%"
+  	},
+  	gameoverText: {
+  		fontFamily: 'nunito-bold',
+  		fontSize: 30,
+  		padding: 10
+  	},
+  	numberOfRounds: {
+  		fontFamily: 'nunito-regular',
+  		fontSize: 20,
+  		padding: 10
+  	},
+  	numberWas: {
+  		fontSize: 18,
+  		fontFamily: 'nunito-bold'
+  	},
+  	button: {
+  		padding: 20
   	}
 
 })

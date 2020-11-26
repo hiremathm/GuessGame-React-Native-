@@ -53,7 +53,7 @@ const HomeScreen = (props) => {
   		<View style = {styles.screen}>
   			<Text style = {styles.title}>Start a New Game!</Text>
   			<Card style = {styles.inputContainer}>
-  				<Text>Enter a Number!</Text>
+  				<Text styles = {styles.enterInput}>Enter a Number!</Text>
   				<TextInput style = {styles.input} blurOnSubmit autoCapitalize='none' autoCorrect = {false} keyboardType = 'number-pad' maxLength = {2} onChangeText = {numberInputHandler} value = {enteredValue}/>
 
   				<View style = {styles.buttonContainer}>
@@ -74,6 +74,7 @@ const HomeScreen = (props) => {
 }
 
 const styles = StyleSheet.create({
+  enterInput: {fontFamily: 'nunito-regular'},
   screen: {
   	flex: 1,
   	padding: 10,
@@ -94,7 +95,8 @@ const styles = StyleSheet.create({
   },
   title: {
   	fontSize: 20,
-  	marginVertical: 10
+  	marginVertical: 10,
+    fontFamily: 'nunito-light'
   },
   input: {
     width: '20%',

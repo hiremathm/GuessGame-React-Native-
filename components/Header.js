@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
 	headerTitle: {
 		color: 'black',
 		paddingTop: 20,
-		fontSize: 25
+		fontSize: 25,
+		fontFamily: 'nunito-bold'
 	}
 })
 

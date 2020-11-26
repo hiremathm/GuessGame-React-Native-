@@ -1,16 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState}from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-
+import * as Font from 'expo-font';
+import {AppLoading} from 'expo';
 
 import Header from './components/Header'
 import HomeScreen from './screens/HomeScreen'
 import GameScreen from './screens/GameScreen'
 import GameOverScreen from './screens/GameOverScreen'
 
+
+const getFonts = () => Font.loadAsync({
+  'nunito-regular': require('./assets/fonts/Nunito-Regular.ttf'),
+  'nunito-bold': require('./assets/fonts/Nunito-Bold.ttf'),
+  'nunito-light': require('./assets/fonts/Nunito-Light.ttf')
+})
+
 export default function App() {
   const [selectedNumber, setSelectedNumber] = useState()
   const [guessRounds, setGuessRounds] = useState(0)
+  const [fontsloaded, setFontsLoaded] = useState(false);
 
   const restartGameHandler = value => {
   	setGuessRounds(0)
@@ -35,12 +44,28 @@ export default function App() {
   	content = <GameOverScreen guessRounds = {guessRounds} choice = {selectedNumber} restartGameHandler = {restartGameHandler}/>
   }
 
-  return (
+  // return (
+  //   <View style={styles.root}>
+  //     <Header title = "Guess Game"/>
+  //     {content}
+  //   </View>
+  // );
+
+  if(fontsloaded){
+    return (
     <View style={styles.root}>
       <Header title = "Guess Game"/>
       {content}
     </View>
-  );
+    );
+  }else{
+    return (
+    <AppLoading 
+      startAsync = {getFonts}
+      onFinish = {() => setFontsLoaded(true)}
+    />
+    )
+  }
 }
 
 const styles = StyleSheet.create({

@@ -56,7 +56,7 @@ const GameScreen = props => {
 
 	return (
 		<View style = {styles.screen}>
-			<Text>
+			<Text style = {styles.guessText}>
 				Opponent's guess
 			</Text>
 			<NumberContainer selectedNumber = {currentGuess}/>
@@ -80,6 +80,10 @@ const styles = StyleSheet.create({
 		marginTop: 20,
 		width: 300,
 		maxWidth: '80%'
+	},
+	guessText: {
+		fontFamily: 'nunito-bold',
+		fontSize: 20
 	}
 })
 
