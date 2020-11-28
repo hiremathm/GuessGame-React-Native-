@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, Button, Alert, TouchableOpacity} from 'react-nat
 
 import Card from './Card'
 import Colors from '../defaultConstants/colors'
+import MainButton from '../components/MainButton'
 
 const GameOver = props => {
 	return (
@@ -19,7 +20,11 @@ const GameOver = props => {
 				<Text style = {styles.numberWas}>
 					Number was : {props.choice}
 				</Text>
-				<View style = {styles.button}><Button sytle = {{borderRadius:30}} color = {Colors.primary} title = "Start Game Again!" onPress = {props.restartGameHandler}/></View>
+				<View style = {styles.button}>
+          <MainButton color = {Colors.primary} style = {styles.mainbutton} onPress = {props.restartGameHandler}>
+            Start Game Again!
+          </MainButton>
+        </View>
 			</View>
 		</Card>
 	)
@@ -55,8 +60,12 @@ const styles = StyleSheet.create({
   		fontFamily: 'nunito-bold'
   	},
   	button: {
-  		padding: 20
-  	}
+  		padding: 20,
+  	},
+    mainbutton: {
+      width: "100%"
+    }
+
 
 })
 

@@ -1,8 +1,11 @@
 import React, {useState, useRef, useEffect} from 'react'
-import {View, Text, StyleSheet, Button, Alert} from 'react-native'
+import {View, Text, StyleSheet, Button, Alert, TouchableOpacity} from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
 
 import NumberContainer  from '../components/NumberContainer'
 import Card from './Card'
+import Colors from '../defaultConstants/colors'
+import MainButton from '../components/MainButton'
 
 const generateRandomNumber = (min, max, exclude) => {
 	min = Math.ceil(min)
@@ -61,8 +64,13 @@ const GameScreen = props => {
 			</Text>
 			<NumberContainer selectedNumber = {currentGuess}/>
 			<Card style = {styles.buttonContainer}>
-				<Button title = "LOWER" onPress = {nextGuessHandler.bind(this, 'lower')} />
-				<Button title = "GREATER" onPress = {nextGuessHandler.bind(this, 'greater')} />
+				<MainButton onPress = {nextGuessHandler.bind(this, 'lower')} style = {{width: 60}}>
+					<Ionicons name="ios-remove-circle-outline" size={40} color="black" />
+				</MainButton>
+				
+				<MainButton onPress = {nextGuessHandler.bind(this, 'greater')} style = {{width: 60}}>
+					<Ionicons name="ios-add-circle-outline" size={40} color="black" />
+				</MainButton>
 			</Card>
 		</View>
 	)
@@ -84,7 +92,25 @@ const styles = StyleSheet.create({
 	guessText: {
 		fontFamily: 'nunito-bold',
 		fontSize: 20
-	}
+	},
+	button: {
+		width: 100,
+		paddingVertical: 10,
+		paddingHorizontal: 10,
+		borderColor: '#eee',
+	    backgroundColor:Colors.primary,
+	    borderRadius: 10,
+	    justifyContent: 'center',
+	    borderWidth: 1,
+	    alignItems: 'center'
+	},
+	textStyle:{
+      color:'#fff',
+      textAlign:'center',
+	  fontFamily: 'nunito-bold',
+	  fontSize: 16
+
+  }
 })
 
 export default GameScreen;

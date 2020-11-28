@@ -4,6 +4,7 @@ import {View, Text, StyleSheet, TextInput, Button, TouchableWithoutFeedback, Key
 import Card from './Card'
 import colors from '../defaultConstants/colors'
 import NumberContainer from '../components/NumberContainer'
+import MainButton from '../components/MainButton'
 
 const HomeScreen = (props) => {
 
@@ -41,7 +42,7 @@ const HomeScreen = (props) => {
       <Card style = {styles.summaryContainer}>
         <Text>You Entered Number</Text> 
         <NumberContainer selectedNumber = {selectedNumber}/>
-        <Button title = "Start Game" onPress = {() => props.setStartGameHandler(selectedNumber)}/>
+        <MainButton onPress = {() => props.setStartGameHandler(selectedNumber)}>Start Game</MainButton>
       </Card>
     )
   }
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   button: {
-    width: 80,
+    width: 100,
   },
   inputContainer: {
   	width: 300,
@@ -106,7 +107,9 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   summaryContainer: {
-    marginTop: 20
+    marginTop: 20,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });
 
